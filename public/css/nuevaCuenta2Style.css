@@ -1,0 +1,34 @@
+.header-content {
+    padding-top: 0%;
+}
+
+.texto {
+    text-align: left;
+    padding-left: 0%;
+}
+
+.formulario {
+    padding: 3%;
+    color: black;
+}
+
+#principal {
+    width: 90%;
+    margin: 5%;
+    background-color: #ffffffa6;
+}
+
+.formularioCentrado {
+    padding: 5% 15% 10% 15%;
+    color: black;
+}
+
+.custom-select {
+    padding-left: 3%;
+    padding-right: 3%;
+    ;
+}
+
+.formRepo {
+    padding: 10%;
+}
