@@ -69,10 +69,6 @@
                             <option value="2">334343444 -- Premium</option>
                             <option value="3">334343444 -- Plus</option>
                         </select>
-                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                            <input name="eliminarAnterior" type="checkbox" class="custom-control-input" id="customControlInline">
-                            <label class="custom-control-label" for="customControlInline">Eliminar Cuenta Anterior</label>
-                        </div>
                     </div>
                     <div class="form-group row">
                         <div class="mx-auto">

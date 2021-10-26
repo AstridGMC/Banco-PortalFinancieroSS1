@@ -60,7 +60,7 @@
                     <div class="form-group row" style="text-align: left;">
                         <label for="staticEmail" class="col-sm-4 col-form-label">Filtrar por Fecha:</label>
                         <div class="col-sm-8">
-                            <input type="date"  name="fecha" id="fecha" class="form-control" value="<?php  echo date("Y-n-j");  ?>">
+                            <input type="date"  name="fecha" id="fecha" class="form-control" value="<?php  echo date("Y-n-j"); ?>">
                         </div>
                     </div>
                     <button type="button" class="btn btn-info">Filtrar</button>
@@ -92,11 +92,7 @@
                         ?>
                     </tbody>
                 </table>
-
                 <br>
-
-
-
             </div>
         </div>
     </div>

@@ -55,17 +55,16 @@
                         </div>
                         <div class="form-group d-flex align-items-center">
                             <div class="icon"><span class="far fa-envelope"></span></div>
-                            <input name="correo" autocomplete="off" type="email" class="form-control" placeholder="Correo">
+                            <input name="correo" autocomplete="off" type="email" class="form-control" placeholder="Correo" required>
                         </div>
-                        <input autocomplete="off" type="text" class="form-control" placeholder="City" hidden>
                         <div class="form-group d-flex align-items-center">
                             <div class="icon"><span class="fas fa-key"></span></div>
-                            <input name="password" id="password" autocomplete="off" type="password" class="form-control" placeholder="Password">
+                            <input name="password" id="password" autocomplete="off" type="password" class="form-control" placeholder="Password" required>
                             <div class="icon btn "><span id="ShowPassword" onclick="mostrarPassword();" class="ojo1 eye fa fa-eye-slash"></span></div>
                         </div>
                         <div class="form-group d-flex align-items-center">
                             <div class="icon"><span class="fas fa-key"></span></div>
-                            <input name="password" id="password2" autocomplete="off" type="password" class="form-control" placeholder="Confirmar Password">
+                            <input name="password" id="password2" autocomplete="off" type="password" class="form-control" placeholder="Confirmar Password" required>
                             <div class="icon btn "><span id="ShowPassword" onclick="mostrarPassword2();" class="ojo1 eye fa fa-eye-slash"></span></div>
                         </div>
 

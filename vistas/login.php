@@ -59,12 +59,11 @@
                         <div class="h5 font-weight-bold text-center mb-3">Iniciar Sesion</div>
                         <div class="form-group d-flex align-items-center">
                             <div class="icon"><span class="far fa-envelope"></span></div>
-                            <input name="correo" autocomplete="off" type="email" class="form-control" placeholder="Correo" style="background-color:transparent;" autocomplete="off">
+                            <input name="correo" autocomplete="off" type="email" class="form-control" placeholder="Correo" style="background-color:transparent;" autocomplete="off" required>
                         </div>
-                        <input autocomplete="off" type="text" class="form-control" placeholder="City" hidden>
                         <div class="form-group d-flex align-items-center">
                             <div class="icon"><span class="fas fa-key"></span></div>
-                            <input name="password" id="password" autocomplete="off" type="password" class="form-control" placeholder="Password">
+                            <input name="password" id="password" autocomplete="off" type="password" class="form-control" placeholder="Password" required>
                             <div class="icon btn "><span id="ShowPassword" onclick="mostrarPassword()" class="eye fa fa-eye-slash"></span></div>
                         </div>
                         <div class="btn btn-primary mb-3" >Registrarme</div>

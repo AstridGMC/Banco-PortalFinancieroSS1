@@ -64,13 +64,13 @@
                 <div class="form-group row" style="padding-top: 5%">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Numero Cuenta</label>
                     <div class="col-sm-10">
-                        <input name="numeroCuenta" type="number" class="form-control" id="inputEmail3" placeholder="Numero Cuenta">
+                        <input name="numeroCuenta" type="number" class="form-control" id="inputEmail3" placeholder="Numero Cuenta" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">Password Admin</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password" required>
                     </div>
                 </div>
 

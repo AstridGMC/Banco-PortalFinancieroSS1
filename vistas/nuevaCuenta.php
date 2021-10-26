@@ -128,36 +128,17 @@
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-2 col-form-label">Correo Usuario</label>
                                             <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                                <input type="email" class="form-control" id="inputEmail3" placeholder="Email" required>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputPassword3" class="col-sm-2 col-form-label">Password Admin</label>
                                             <div class="col-sm-10">
-                                                <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                                <input type="password" class="form-control" id="inputPassword3" placeholder="Password" required>
                                             </div>
                                         </div>
                                     </div>
                                 </div> <input type="button" name="next" class="next action-button" value="Submit" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-card">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <h2 class="fs-title">Finish:</h2>
-                                        </div>
-                                    </div> <br><br>
-                                    <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
-                                    <div class="row justify-content-center">
-                                        <div class="col-3"> <img src="https://i.imgur.com/GwStPmg.png" class="fit-image"> </div>
-                                    </div> <br><br>
-                                    <div class="row justify-content-center">
-                                        <div class="col-7 text-center">
-                                            <h5 class="purple-text text-center">You Have Successfully Signed Up</h5>
-                                        </div>
-                                    </div>
-                                </div>
                             </fieldset>
                         </form>
                     </div>
