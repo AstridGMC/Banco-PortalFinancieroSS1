@@ -36,6 +36,7 @@ elseif($_SERVER['REQUEST_METHOD'] == 'PUT'){
     $result = json_decode(file_get_contents($URL_GLOBAL.'/cuenta/retiro', false, $context), true);
 
     if($result['status']==200){
+        $msj = $result['mensaje_informativo'];
         // header('location: ' . '../vistas/ModificarTaza.php');
     }else{
     }

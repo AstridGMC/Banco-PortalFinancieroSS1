@@ -70,6 +70,7 @@
     </div>
 </nav>
     <?php include "../service/sessionlogin.service.php" ?>
+    <?php include "modal.php" ?>
     <!-- end of preloader -->
     <div id="header" class="header">
         <div class="header-content" style=" background-image: url('../public/imagenes/header-background.jpg'); ">

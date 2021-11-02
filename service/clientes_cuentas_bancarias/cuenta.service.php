@@ -41,7 +41,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     unset($saldo);
     if($result['status']==200){
         $mensaje_informativo = $result['mensaje_informativo'];
-        header('location: ' . '../../vistas/nuevaCuenta.php');
+        $msj = $result['mensaje_informativo'];
+        header('location: ' . '../../vistas/nuevaCuenta.php?mensaje='.$msj);
     }else{
 
     }

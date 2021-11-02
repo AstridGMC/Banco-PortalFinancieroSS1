@@ -26,8 +26,9 @@ session_start();
     $result = json_decode(file_get_contents($URL_GLOBAL.'/recuperacionPin', false, $context), true);
 
     if($result['status']==200){
+        $msj = $result['mensaje_informativo'];
         // $lista = $result['data'];
-        header('location: ' . '../../vistas/index.php');
+        header('location: ' . '../../vistas/RecuperarPin.php?mensaje='.$msj);
     }else{
     }
 

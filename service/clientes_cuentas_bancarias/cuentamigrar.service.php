@@ -30,7 +30,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $result = json_decode(file_get_contents($URL_GLOBAL.'/cuenta/migrar_cuenta', false, $context), true);
 
     if($result['status']==200){
-        header('location: ' . '../../vistas/introducirCuenta.php');
+        $msj = $result['mensaje_informativo'];
+        header('location: ' . '../../vistas/introducirCuenta.php?mensaje='.$msj);
     }else{
     }
 

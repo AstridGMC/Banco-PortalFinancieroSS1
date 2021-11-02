@@ -6,13 +6,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $data = http_build_query(
         array(
             'no_cuenta' => $_POST['no_cuenta'],
-            'motivo' => $_POST['motivo']
+            'estado' => $_POST['estado'],
+            'id_banco' => $_POST['id_banco'],
+            'saldo' => $_POST['saldo']
             )
     );
 
     $opts = array('http' =>
         array(
-            'method'  => 'DELETE',
+            'method'  => 'PUT',
             'header'  => ['Content-Type: application/x-www-form-urlencoded','token:'.$_SESSION['token']],
             'content' => $data
         )
@@ -24,7 +26,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     if($result['status']==200){
         unset($usuario);
-        header('location: ' . '../../vistas/administracionCuentas.php');
+        $msj = $result['mensaje_informativo'];
+        header('location: ' . '../../vistas/administracionCuentas.php?mensaje='.$msj);
     }else{
     }
 }

@@ -24,11 +24,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     if($result['status']==200){
         // echo $result['mensaje_informativo'];
-        header('location: ' . '../../vistas/ModificarTaza.php');
+        $msj = $result['mensaje_informativo'];
+        // echo $msj;
+        header('location: ' . '../../vistas/ModificarTaza.php?mensaje='.$msj);
     }else{
-        $mensajeError = $result['mensaje_informativo'];
-        echo $result['mensaje_informativo'];
-        // header('location: ' . '../../vistas/ModificarTaza.php');
+        $msj = $result['mensaje_informativo'];
+        // echo $result['mensaje_informativo'];
+        header('location: ' . '../../vistas/ModificarTaza.php?mensaje='.$msj);
     }
 
 

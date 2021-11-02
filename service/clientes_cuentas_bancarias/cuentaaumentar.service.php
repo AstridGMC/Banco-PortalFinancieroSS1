@@ -24,7 +24,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     if($result['status']==200){
         unset($usuario);
-        header('location: ' . '../../vistas/administracionCuentas.php');
+        $msj = $result['mensaje_informativo'];
+        header('location: ' . '../../vistas/administracionCuentas.php?mensaje='.$msj);
     }else{
     }
 }

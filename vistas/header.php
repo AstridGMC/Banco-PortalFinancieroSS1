@@ -80,3 +80,5 @@
         </span>
     </div>
 </nav>
+
+<?php include "modal.php" ?>
