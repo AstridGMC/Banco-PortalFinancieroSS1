@@ -52,40 +52,40 @@
         </div>
     </div>
     <?php include "header.php" ?>
+    <?php
+        include "../service/reportes/reporteestadocuenta.service.php";
+    
+    ?>
     <div id="header" class="header">
         <div class="header-content" style=" background-image: url('../public/imagenes/header-background.jpg'); ">
             <div id="principal">
                 <h1>Reporte de Cuentas</h1>
                 <br>
                 <!-- IMPRIME EL TOTAL DE CUENTAS EXISTENTES-->
-                <h4> Total Cuentas: <?php $total=0; echo $total;?>
+                <h4> Total Cuentas: <?php $total=$cuentas_congeladas+$cuentas_activas+$cuentas_cerradas; echo $total;?>
                 <table class="table">
                     
                     <thead class="thead-dark">
                         <tr>
-                        <th scope="col">No.Cuenta</th>
-                            <th scope="col">Usuario</th>
-                            <th scope="col">tipo Cuenta</th>
-                            <th scope="col">fecha Apertura</th>
+                        <th scope="col">Tipo</th>
+                            <th scope="col">Cantidad</th>
+                            <!-- <th scope="col">tipo Cuenta</th>
+                            <th scope="col">fecha Apertura</th> -->
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                            foreach ($cuentas as $cuenta) {
-                                echo ' <tr>';
-                                echo '  <td scope="row" >'.$cuenta['numeroCuenta'].'</th>';
-                                echo '  <td>'.$usuario['correo'].'</th>';
-                                echo '  <td>'.$cuenta['tipo'].'</th>';
-                                echo '  <td>'.$cuenta['saldo'].'</th>';
-                                echo '  <td>
-                                            <form name = "eliminarRegistro" action="./Administrador/eliminarCurso.php" method="post" style="display: inline;" id="formularioEliminar">
-                                                <input type="hidden" name="idCurso" value="'.$cuenta['numeroCuenta'].'">
-                                                <input type="submit" value="Eliminar" name="B1"  class="btn btn-sm btn-danger">    
-                                            </form>
-                                        </td>';
-                                echo ' </tr>';
-                            }
-                        ?>
+                        <tr>
+                            <td>Cuentas Congeladas</td>
+                            <td><?php echo $cuentas_congeladas; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Cuentas Activas</td>
+                            <td><?php echo $cuentas_activas; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Cuentas Cerradas</td>
+                            <td><?php echo $cuentas_cerradas; ?></td>
+                        </tr>
                     </tbody>
                 </table>
 

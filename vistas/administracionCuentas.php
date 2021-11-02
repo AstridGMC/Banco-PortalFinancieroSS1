@@ -52,6 +52,7 @@
         </div>
     </div>
     <?php include "header.php" ?>
+    <?php include "../service/includes/getallcuenta.php" ?>
     <div id="header" class="header">
         <div class="header-content" style=" background-image: url('../public/imagenes/header-background.jpg'); ">
             <div id="principal">
@@ -63,23 +64,47 @@
                             <th scope="col">Usuario</th>
                             <th scope="col">tipo</th>
                             <th scope="col">Saldo</th>
-                            <th scope="col">Cerrar</th>
+                            <th scope="col">Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        foreach ($cuentas as $cuenta) {
+                        foreach ($listCuentas as $cuenta) {
                             echo ' <tr>';
-                            echo '  <td scope="row" >' . $cuenta['numeroCuenta'] . '</th>';
-                            echo '  <td>' . $usuario['correo'] . '</th>';
-                            echo '  <td>' . $cuenta['tipo'] . '</th>';
+                            echo '  <td scope="row" >' . $cuenta['no_cuenta'] . '</th>';
+                            echo '  <td>' . $cuenta['username_propietario'] . '</th>';
+                            if($cuenta['id_tipo_de_cuenta']==1){
+                                echo '  <td>' . 'Basic' . '</th>';
+                            }elseif($cuenta['id_tipo_de_cuenta']==2){
+                                echo '  <td>' . 'Premium' . '</th>';
+                            }elseif($cuenta['id_tipo_de_cuenta']==3){
+                                echo '  <td>' . 'Plus' . '</th>';
+                            }
                             echo '  <td>' . $cuenta['saldo'] . '</th>';
                             echo '  <td>
-                                            <form name = "eliminarRegistro" action="./Administrador/eliminarCurso.php" method="post" style="display: inline;" id="formularioEliminar">
-                                                <input type="hidden" name="idCurso" value="' . $cuenta['numeroCuenta'] . '">
-                                                <input type="submit" value="Cerrar" name="B1"  class="btn btn-sm btn-danger">    
-                                            </form>
-                                        </td>';
+                                        <form name = "editarRegistro" action="EditarCuenta.php" method="POST" style="display: inline;" id="formularioeditar">
+                                            <input type="hidden" name="no_cuenta" value="' . $cuenta['no_cuenta'] . '">
+                                            <input type="submit" value="Editar" name="B1"  class="btn btn-sm btn-danger">    
+                                        </form>
+                                   ';
+                            echo '
+                                    <form name = "AumentarRegistro" action="aumentarsaldo.php" method="POST" style="display: inline;" id="formularioAumentar">
+                                        <input type="hidden" name="no_cuenta" value="' . $cuenta['no_cuenta'] . '">
+                                        <input type="submit" value="+ Aumentar Saldo" name="B1"  class="btn btn-sm btn-danger">    
+                                    </form>
+                                ';
+                            echo '  
+                                <form name = "DisminuirRegistro" action="disminuirsaldo.php" method="POST" style="display: inline;" id="formularioDisminuir">
+                                    <input type="hidden" name="no_cuenta" value="' . $cuenta['no_cuenta'] . '">
+                                    <input type="submit" value="- Disminuir Saldo" name="B1"  class="btn btn-sm btn-danger">    
+                                </form>
+                            ';
+                            echo '  
+                                <form name = "eliminarRegistro" action="eliminarCuenta.php" method="POST" style="display: inline;" id="formularioEliminar">
+                                    <input type="hidden" name="no_cuenta" value="' . $cuenta['no_cuenta'] . '">
+                                    <input type="submit" value="Eliminar cuenta" name="B1"  class="btn btn-sm btn-danger">    
+                                </form>
+                            </td>';
                             echo ' </tr>';
                         }
                         ?>

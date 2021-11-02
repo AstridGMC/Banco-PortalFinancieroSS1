@@ -51,47 +51,58 @@
             <div class="bounce3"></div>
         </div>
     </div>
-
-
     <?php include "header.php" ?>
+    <?php if(isset($_GET['fecha_final'])){
+        
+        include "../service/reportes/reportemovimientos.service.php";
+        //include "../service/includes/getbancos.php";
+    }else {
+        // echo $_GET['mno_cuenta'];
+    } ?>
     <div id="header" class="header">
         <div class="header-content" style=" background-image: url('../public/imagenes/header-background.jpg'); ">
             <div id="principal">
                 <h1>Reporte de Ingresos</h1>
-                <form method="POST" action="" class="formRepo">
+                <form method="GET" action="./ReporteMovimientosUsuario.php" class="formRepo">
                     <div class="form-group row" style="text-align: left;">
                         <label for="staticEmail" class="col-sm-4 col-form-label">Filtrar por Fecha:</label>
                         <div class="col-sm-8">
-                            <input type="date"  name="fecha" id="fecha" class="form-control" value="<?php  echo date("Y-n-j");  ?>">
+                            <input type="date" name="fecha_final" id="fecha_final" class="form-control">
                         </div>
                     </div>
-                    <button type="button" class="btn btn-info">Filtrar</button>
+                    <input type="submit" class="btn btn-info" value="Filtrar">
                 </form>
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">No.Cuenta</th>
+                            <th scope="col">Usuario</th>
                             <th scope="col">tipo Movimiento</th>
                             <th scope="col">monto</th>
                             <th scope="col">fecha</th>
-                            <th scope="col">hora</th>
+                            <!-- <th scope="col">hora</th> -->
                         </tr>
                     </thead>
                     <tbody>
+                        <?php if(isset($lista)){ ?>
                         <?php
-                            foreach ($movimientos as $movimiento) {
+                        foreach ($lista as $movimiento) {
+                            if($movimiento['cuentum.username_propietario']==$_SESSION['username']){
                                 echo ' <tr>';
-                                echo '  <td scope="row" >' . $movimiento['numeroCuenta'] . '</th>';
-                                echo '  <td>' . $movimiento['usuarioCuenta'] . '</th>';
-                                echo '  <td>' . $movimiento['tipoMovimiento'] . '</th>';
+                                echo '  <td scope="row" >' . $movimiento['no_cuenta'] . '</th>';
+                                echo '  <td>' . $movimiento['cuentum.username_propietario'] . '</th>';
+                                echo '  <td>' . $movimiento['tipo'] . '</th>';
                                 echo '  <td>' . $movimiento['monto'] . '</th>';
-                                echo '  <td>' . $movimiento['fecha'] . '</th>';
-                                echo '  <td>' . $movimiento['hora'] . '</th>';
+                                echo '  <td>' . $movimiento['fecha_hora'] . '</th>';
+                                // echo '  <td>' . $movimiento['hora'] . '</th>';
                                 echo ' </tr>';
                             }
+                        }
                         ?>
+                        <?php } ?>
                     </tbody>
                 </table>
+
             </div>
         </div>
     </div>

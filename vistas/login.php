@@ -39,7 +39,7 @@
 </head>
 
 <body data-spy="scroll" data-target=".fixed-top">
-
+    <?php include "../routes/url_route.php"; ?>
     <!-- Preloader -->
     <div class="spinner-wrapper">
         <div class="spinner">
@@ -48,25 +48,49 @@
             <div class="bounce3"></div>
         </div>
     </div>
-    <?php include "header.php" ?>
+    <?php //include "header.php" ?>
+    <nav class="navbar navbar-expand-md navbar-dark navbar-custom fixed-top">
+    <a class="navbar-brand logo-image" href="index.php"><img src="../public/imagenes/logoFinanzas.svg" alt="alternative"></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-awesome fas fa-bars"></span>
+        <span class="navbar-toggler-awesome fas fa-times"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle page-scroll" href="#about" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">Mi Cuenta</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="RecuperarPin.php"><span class="item-text">Recuperar Pin</span></a>
+                    <div class="dropdown-items-divide-hr"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+    <?php include "../service/sessionlogin.service.php" ?>
     <!-- end of preloader -->
     <div id="header" class="header">
         <div class="header-content" style=" background-image: url('../public/imagenes/header-background.jpg'); ">
             <div style="width:90%; margin-left: 5%;">
 
                 <div class="wrapper">
-                    <form  method="POST" action="#" >
+                    <form  method="POST" action="../service/login.service.php" meto="post">
+                        <br>
                         <div class="h5 font-weight-bold text-center mb-3">Iniciar Sesion</div>
+                        <hr>
                         <div class="form-group d-flex align-items-center">
-                            <div class="icon"><span class="far fa-envelope"></span></div>
-                            <input name="correo" autocomplete="off" type="email" class="form-control" placeholder="Correo" style="background-color:transparent;" autocomplete="off" required>
+                            <div class="icon"><span class="far fa-user"></span></div>
+                            <input name="username" autocomplete="off" type="text" class="form-control" placeholder="Nombre Usuario" style="background-color:transparent;" autocomplete="off" required>
                         </div>
                         <div class="form-group d-flex align-items-center">
                             <div class="icon"><span class="fas fa-key"></span></div>
                             <input name="password" id="password" autocomplete="off" type="password" class="form-control" placeholder="Password" required>
                             <div class="icon btn "><span id="ShowPassword" onclick="mostrarPassword()" class="eye fa fa-eye-slash"></span></div>
                         </div>
-                        <div class="btn btn-primary mb-3" >Registrarme</div>
+                        <input class="btn btn-primary mb-3" type="submit" value="Iniciar Sesion">
+                        <!-- <div class="btn btn-primary mb-3" >Iniciar Sesion</div> -->
                     </form>
                 </div>
             </div>

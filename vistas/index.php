@@ -54,7 +54,7 @@
                         <div class="text-container">
                             <h1> <span id="js-rotating">CONTROL, PERSONALIZACION, TRANSACCIONES</span></h1>
                             <p class="p-heading p-large">PLATAFORMA TECNOLÓGICA PARA AGILIZAR TRÁMITES BANCARIOS</p>
-                            <a class="btn-solid-lg page-scroll" href="#intro">Inicia Sesion</a>
+                            <!-- <a class="btn-solid-lg page-scroll" href="#intro">Inicia Sesion</a> -->
                         </div>
                     </div> <!-- end of col -->
                 </div> <!-- end of row -->

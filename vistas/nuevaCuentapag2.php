@@ -52,6 +52,13 @@
         </div>
     </div>
     <?php include "header.php" ?>
+    <?php 
+        // $usuario = $_POST['usuario'];
+        $tipo = $_POST['tipo_cuenta'];
+        $banco = $_POST['id_banco'];
+        // $monto = $_POST[''];
+        // $monto = $_POST[''];
+    ?>
     <div id="header" class="header">
         <div class="header-content" style=" background-image: url('../public/imagenes/header-background.jpg'); ">
             <div id="principal">
@@ -60,7 +67,7 @@
                     <h3 class="texto">Datos Usuario</h3>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputEmail4" class="texto">Correo Usuario</label>
+                            <label for="inputEmail4" class="texto">Id Banco</label>
                             <input type="email" class="form-control" id="inputEmail4" name="correo" value="<?php $usuario ?>" disabled>
                         </div>
                         <div class="form-group col-md-6">

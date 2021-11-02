@@ -19,7 +19,7 @@
     <meta property="og:type" content="article" />
 
     <!-- Website Title -->
-    <title>Elegir Cuenta</title>
+    <title>Reporte Ingresos</title>
 
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
@@ -51,32 +51,49 @@
             <div class="bounce3"></div>
         </div>
     </div>
+
+
     <?php include "header.php" ?>
+    <?php $_SERVER['REQUEST_METHOD'] = 'GET';
+    include "../service/reportes/reportemovimientos.service.php" ?>
     <div id="header" class="header">
         <div class="header-content" style=" background-image: url('../public/imagenes/header-background.jpg'); ">
             <div id="principal">
-                <form class='formularioCentrado' method='POST' action="">
-                    <h1 style="color: black;">Elija la Cuenta</h1>
-                    <div>
-                        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Elegir Cuenta</label>
-                        <select name="tipoNuevo" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                            <?php
-                            /*foreach ($tipos as $tipo) {
-                                    echo "<option value='".$tipo."'>".$tipo."</option>";
-                                }*/
-                            ?>
-                            <option value="1">343434343 -- Basic</option>
-                            <option value="2">334343444 -- Premium</option>
-                            <option value="3">334343444 -- Plus</option>
-                        </select>
-                    </div>
-                    <div class="form-group row">
-                        <div class="mx-auto">
-
-                            <button type="submit" class="btn btn-primary">Buscar Cuenta</button>
+                <h1>Reporte de Ingresos/Egresos</h1>
+                <form method="POST" action="" class="formRepo">
+                    <div class="form-group row" style="text-align: left;">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Filtrar por Fecha:</label>
+                        <div class="col-sm-8">
+                            <input type="date"  name="fecha_final" id="fecha_final" class="form-control" value="<?php  echo date("Y-n-j");  ?>">
                         </div>
                     </div>
+                    <button type="button" class="btn btn-info">Filtrar</button>
                 </form>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">No.Cuenta</th>
+                            <th scope="col">tipo Movimiento</th>
+                            <th scope="col">monto</th>
+                            <th scope="col">fecha</th>
+                            <th scope="col">hora</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            foreach ($lista as $movimiento) {
+                                echo ' <tr>';
+                                echo '  <td scope="row" >' . $movimiento['no_cuenta'] . '</th>';
+                                echo '  <td>' . $movimiento['tipo'] . '</th>';
+                                echo '  <td>' . $movimiento['tipoMovimiento'] . '</th>';
+                                echo '  <td>' . $movimiento['monto'] . '</th>';
+                                echo '  <td>' . $movimiento['fecha_hora'] . '</th>';
+                                // echo '  <td>' . $movimiento['hora'] . '</th>';
+                                echo ' </tr>';
+                            }
+                        ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

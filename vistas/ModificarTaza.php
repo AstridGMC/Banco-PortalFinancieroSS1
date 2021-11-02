@@ -52,23 +52,26 @@
         </div>
     </div>
     <?php include "header.php" ?>
+    <?php include "../service/includes/getmonedas.php";?>
     <div id="header" class="header">
         <div class="header-content" style=" background-image: url('../public/imagenes/header-background.jpg'); ">
             <div id="principal">
-                <form class='formularioCentrado' method="POST" action="">
+                <form class='formularioCentrado' method="POST" action="../service/moneda/moneda.service.php">
                     <h1 style="color: black;">Modificar Taza de Cambio</h1>
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Moneda</label>
                             <select id="monedas" name="monedas" class="custom-select my-1 mr-sm-4" id="inlineFormCustomSelectPref">
-                                <option>Monedas</option>
+                                <option selected="true" disabled="disabled">Monedas</option>
                                 <?php
-                                /*foreach ($tipos as $tipo) {
-                                    echo "<option value='".$valorMoneda."'>".$tipo."</option>";
-                                }*/
+                                    foreach ($listMonedas as $moneda) {
+                                        if($moneda['moneda']==2){
+                                            echo "<option value='".$moneda['moneda']."'>".'USD - Dolares'."</option>";
+                                        }elseif($moneda['moneda']==3){
+                                            echo "<option value='".$moneda['moneda']."'>".'€ - Euros'."</option>";
+                                        }
+                                    }
                                 ?>
-                                <option value="7.50">Dolares</option>
-                                <option value="10.00">Euros</option>
                             </select>
                         </div>
                         <!--se llena automaticamente al dar click en una moneda-->
@@ -85,7 +88,7 @@
                     <div class="form-group row" style="padding-top: 5%; text-align: left;">
                         <label for="inputEmail3" class="col-sm-3 col-form-label">Nueva Taza</label>
                         <div class="col-sm-8">
-                            <input name="tazaNueva" type="number" class="form-control" id="inputEmail3" placeholder="Nueva Taza" required>
+                            <input name="nuevo_valor_quetzales" type="decimal" class="form-control" id="inputEmail3" placeholder="Nueva Taza" required>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -115,9 +118,13 @@
         select.addEventListener('change',
             function() {
                 var selectedOption = this.options[select.selectedIndex];
-                taza.value = selectedOption.value
+                if(selectedOption.value==2){
+                
+                }else if(selectedOption.value==3){
+                    
+                }
                 console.log(selectedOption.value + ': ' + selectedOption.text);
-            });
+        });
     </script>
 </body>
 

@@ -52,18 +52,25 @@
         </div>
     </div>
     <?php include "header.php" ?>
+    <?php if(isset($_GET['fecha_final'])){
+        
+        include "../service/reportes/reportecongelacioncuenta.service.php";
+        //include "../service/includes/getbancos.php";
+    }else {
+        // echo $_GET['mno_cuenta'];
+    } ?>
     <div id="header" class="header">
         <div class="header-content" style=" background-image: url('../public/imagenes/header-background.jpg'); ">
             <div id="principal">
                 <h1>Reporte de Cuentas Congeladas</h1>
-                <form method="POST" action="" class="formRepo">
+                <form method="GET" action="ReporteCuentasCongeladas.php" class="formRepo">
                     <div class="form-group row" style="text-align: left;">
                         <label for="staticEmail" class="col-sm-4 col-form-label">Filtrar por Fecha:</label>
                         <div class="col-sm-8">
-                            <input type="date" name="fecha" id="fecha" class="form-control" value="<?php echo date("Y-n-j");  ?>">
+                            <input type="date" name="fecha_final" id="fecha_final" class="form-control" value="<?php echo date("Y-n-j");  ?>">
                         </div>
                     </div>
-                    <button type="button" class="btn btn-info">Filtrar</button>
+                    <button type="submit" class="btn btn-info">Filtrar</button>
                 </form>
                 <table class="table">
                     <thead class="thead-dark">
@@ -75,16 +82,24 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <?php if(isset($lista)){ ?>
                         <?php
-                        foreach ($cuentas as $cuenta) {
+                        foreach ($lista as $cuenta) {
                             echo ' <tr>';
-                            echo '  <td scope="row" >' . $cuenta['numero_cuenta'] . '</th>';
-                            echo '  <td>' . $cuenta['username'] . '</th>';
-                            echo '  <td>' . $cuenta['tipo_cuenta'] . '</th>';
-                            echo '  <td>' . $cuenta['fecha_apertura'] . '</th>';
+                            echo '  <td scope="row" >' . $cuenta['no_cuenta'] . '</th>';
+                            echo '  <td>' . $cuenta['username_propietario'] . '</th>';
+                            if($cuenta['id_tipo_de_cuenta']==1){
+                                echo '  <td>' . 'Basic' . '</th>';
+                            }elseif($cuenta['id_tipo_de_cuenta']==2){
+                                echo '  <td>' . 'Premium' . '</th>';
+                            }elseif($cuenta['id_tipo_de_cuenta']==3){
+                                echo '  <td>' . 'Plus' . '</th>';
+                            }
+                            echo '  <td>' . $cuenta['fecha_hora_de_creacion'] . '</th>';
                             echo ' </tr>';
                         }
                         ?>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>

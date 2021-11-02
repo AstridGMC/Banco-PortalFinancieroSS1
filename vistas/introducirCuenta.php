@@ -52,35 +52,115 @@
         </div>
     </div>
     <?php include "header.php" ?>
+    <?php if(isset($_POST['no_cuenta'])){
+        
+        include "../service/includes/getCuenta.php";
+        //include "../service/includes/getbancos.php";
+    }else {
+        // echo $_GET['mno_cuenta'];
+    } ?>
     <div id="header" class="header">
         <div class="header-content" style=" background-image: url('../public/imagenes/header-background.jpg'); ">
             <div id="principal">
-                <?php if ($_GET["tipoF"] == 'cambiarTipo') {
-                    echo "<form class='formularioCentrado'  method='POST'>";
-                } else {
-                    echo "<form class='formularioCentrado'  method='POST'>";
-                } ?>
-                <h1 style="color: black;">Ingrese numero de Cuenta</h1>
-                <div class="form-group row" style="padding-top: 5%">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Numero Cuenta</label>
-                    <div class="col-sm-10">
-                        <input name="numeroCuenta" type="number" class="form-control" id="inputEmail3" placeholder="Numero Cuenta" required>
+                <form class='formularioCentrado'  method='POST' action="introducirCuenta.php">
+                    <h1 style="color: black;">Ingrese numero de Cuenta</h1>
+                    <div class="form-group row" style="padding-top: 5%">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Numero Cuenta</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="no_cuenta" name="no_cuenta" placeholder="Numero Cuenta" required>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Password Admin</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password" required>
-                    </div>
-                </div>
+                    <div class="form-group row">
+                        <div class="mx-auto">
 
-                <div class="form-group row">
-                    <div class="mx-auto">
-
-                        <button type="submit" class="btn btn-primary">Buscar Cuenta</button>
+                            <button type="submit" class="btn btn-primary">Buscar Cuenta</button>
+                        </div>
                     </div>
-                </div>
                 </form>
+                <?php if(isset($usuario)){ ?>
+                <form class="formulario" method="POST" action="../service/clientes_cuentas_bancarias/cuentamigrar.service.php" >
+                    <h2>Detalle Cuenta</h2>
+                    <!-- <h3 class="texto">Datos Usuario</h3> -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4" class="texto">Correo Usuario</label>
+                            <input type="email" class="form-control" id="identificador1" name="identificador1" value="<?php echo $usuario['identificador'] ?>" disabled>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4" class="texto">Nombre</label>
+                            <input type="text" class="form-control" id="username_propietario1" name="username_propietario1" placeholder="nombre" value="<?php echo $usuario['username_propietario'] ?>" disabled>
+                            <input type="text" class="form-control" id="username_propietario" name="username_propietario" placeholder="nombre" value="<?php echo $usuario['username_propietario'] ?>" hidden>
+                        </div>
+                    </div>
+                    <h3 style="text-align: left;">Datos Cuenta</h3>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputCity" class="texto">Numero Cuenta</label>
+                            <input type="text" class="form-control" id="cuenta" name="cuenta" value="<?php echo $usuario['no_cuenta'] ?>" disabled>
+                            <input type="text" class="form-control" id="no_cuenta" name="no_cuenta" value="<?php echo $usuario['no_cuenta'] ?>" hidden>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputCity" class="texto">Tipo Cuenta</label>
+                            <?php 
+                                if($usuario['id_tipo_de_cuenta']==1){
+                                    
+                                    echo '<input type="text" class="form-control" name="tipo" value="Basic" disabled>';
+                                }elseif($usuario['id_tipo_de_cuenta']==2){
+                                    echo '<input type="text" class="form-control" name="tipo" value="Premium" disabled>';
+                                }elseif($usuario['id_tipo_de_cuenta']==3){
+                                    echo '<input type="text" class="form-control" name="tipo" value="Plus" disabled>';
+                                }
+                                echo '<input type="text" class="form-control" name="id_tipo_de_usuario" value="'.$usuario['id_tipo_de_cuenta'].'"  hidden>';
+                            ?>
+                        </div>
+                        <div>
+                            <?php echo '<input type="text" class="form-control" name="id_banco" value="'.$usuario['id_banco'].'"  hidden>'; ?>
+                            <?php echo '<input type="text" class="form-control" name="estado" value="'.$usuario['estado'].'"  hidden>'; ?>
+                            
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputCity" class="texto">Fecha Apertura</label>
+                            <input type="text" class="form-control" name="fecha_hora_de_creacion" value="<?php echo $usuario['fecha_hora_de_creacion'] ?>" disabled>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputCity" class="texto">Saldo Actual</label>
+                            <input type="text" class="form-control" name="saldo1" value="<?php echo $usuario['saldo'] ?>" disabled>
+                            <input type="text" class="form-control" name="saldo" value="<?php echo $usuario['saldo'] ?>" hidden>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputCity" class="texto">Estado Actual</label>
+                            <input type="text" class="form-control" name="estado1" value="<?php echo $usuario['estado'] ?>" disabled>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label" >Tipo de Cuenta Nueva</label>
+                                            <select id="nueva_cuenta" name="nueva_cuenta" class="custom-select my-1 mr-sm-4" id="inlineFormCustomSelectPref" required>
+                                                <option selected="true" disabled="disabled">Tipo Cuentas</option>
+                                                <?php
+                                                    if($usuario['id_tipo_de_cuenta']==1){
+                                                        echo "<option selected=\"true\" value='".'1'."'>".'Basica'."</option>";
+                                                        echo "<option value='".'2'."'>".'Premium'."</option>";
+                                                        echo "<option value='".'3'."'>".'Plus'."</option>";
+                                                    }elseif($usuario['id_tipo_de_cuenta']==2){
+                                                        echo "<option value='".'1'."'>".'Basica'."</option>";
+                                                        echo "<option selected=\"true\" value='".'2'."'>".'Premium'."</option>";
+                                                        echo "<option value='".'3'."'>".'Plus'."</option>";
+                                                    }elseif($usuario['id_tipo_de_cuenta']==3){
+                                                        echo "<option value='".'1'."'>".'Basica'."</option>";
+                                                        echo "<option value='".'2'."'>".'Premium'."</option>";
+                                                        echo "<option selected=\"true\" value='".'3'."'>".'Plus'."</option>";
+                                                    }
+                                                    
+                                                ?>
+                                            </select>
+                                        </div>
+                    <input type="submit" class="btn btn-primary" value="Cambiar Cuenta" input>
+                </form>
+                <?php } ?>
+                <?php unset($usuario); ?>
             </div>
         </div>
     </div>

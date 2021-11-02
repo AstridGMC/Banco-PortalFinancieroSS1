@@ -52,6 +52,7 @@
         </div>
     </div>
     <?php include "header.php" ?>
+    <?php include "../service/includes/getbancos.php"; ?>
     <!-- end of preloader -->
     <div id="header" class="header">
         <div class="header-content" style=" background-image: url('../public/imagenes/header-background.jpg'); ">
@@ -60,7 +61,8 @@
                     <div class="card px-0 pt-4 pb-0 mt-3 mb-3" style="margin: 2%;;">
                         <h2 id="heading">Nueva Cuenta</h2>
                         <p></p>
-                        <form id="msform" style="padding: 5%;" method="POST" action="">
+                        <!-- <form id="msform" style="padding: 5%;" method="POST" action="nuevaCuentapag2.php"> -->
+                        <form id="msform" style="padding: 5%;" method="POST" action="../service/clientes_cuentas_bancarias/cuenta.service.php" >
                             <!-- progressbar -->
                             <ul id="progressbar">
                                 <li class="active" id="account"><strong>Tipo</strong></li>
@@ -97,7 +99,7 @@
                                                 <p class="user"> Dolares</p>
                                                 <p class="site">Monto Apertura:</p>
                                                 <p class="price">$ 50 </p>
-                                                <button type='button' class="buy" id="elegir" onclick="cambiarPremium()">Elegir <i class="fas fa-arrow-circle-right fa-xs"></i></button>
+                                                <button type='button' class="buy" id="tipo_cuenta" onclick="cambiarPremium()">Elegir <i class="fas fa-arrow-circle-right fa-xs"></i></button>
                                             </div>
                                             <div id="part3" class="parts">
                                                 <p class="title">PLUS</p>
@@ -106,7 +108,7 @@
                                                 <p class="user">Euros</p>
                                                 <p class="site">Monto Apertura:</p>
                                                 <p class="price">€ 50</p>
-                                                <button type='button' class="buy" onclick="cambiarPlus()">Elegir <i class="fas fa-arrow-circle-right fa-xs"></i></button>
+                                                <button type='button' class="buy" id="tipo_cuenta" onclick="cambiarPlus()">Elegir <i class="fas fa-arrow-circle-right fa-xs"></i></button>
                                             </div>
                                         </div>
                                     </div>
@@ -125,20 +127,34 @@
                                         </div>
                                     </div>
                                     <div style="padding-left: 5rem;padding-right:5rem;">
-                                        <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Correo Usuario</label>
+                                        <!-- <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Banco</label>
                                             <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="inputEmail3" placeholder="Email" required>
+                                                <input type="text" class="form-control" id="id_banco" placeholder="Banco" required>
                                             </div>
+                                        </div> -->
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label" >Banco</label>
+                                            <select id="id_banco" name="id_banco" class="custom-select my-1 mr-sm-4" id="inlineFormCustomSelectPref" required>
+                                                <option selected="true" disabled="disabled">Banco</option>
+                                                <?php
+                                                    foreach ($listBancos as $banco) {
+                                                        echo "<option value='".$banco['id_banco']."'>".$banco['nombre']."</option>";
+                                                    }
+                                                ?>
+                                            </select>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="inputPassword3" class="col-sm-2 col-form-label">Password Admin</label>
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Username Propietario</label>
                                             <div class="col-sm-10">
-                                                <input type="password" class="form-control" id="inputPassword3" placeholder="Password" required>
+                                                <input type="text" class="form-control" id="username1" name="username1" placeholder="username" required>
                                             </div>
                                         </div>
                                     </div>
-                                </div> <input type="button" name="next" class="next action-button" value="Submit" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                                </div> 
+                                <!-- <input type="submit" name="next" class="next action-button" value="Crear"/>  -->
+                                <input class="action-button" type="submit" value="Crear">
+                                <input type="button" name="previous" class="previous action-button-previous" value="Previous">
                             </fieldset>
                         </form>
                     </div>

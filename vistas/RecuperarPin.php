@@ -51,16 +51,17 @@
             <div class="bounce3"></div>
         </div>
     </div>
-    <?php include "header.php" ?>
+    
+
     <div id="header" class="header">
         <div class="header-content" style=" background-image: url('../public/imagenes/header-background.jpg'); ">
             <div id="principal">
-                <form class='formularioCentrado' method="POST" action="">
+                <form class='formularioCentrado' method="GET" action="../service/clientes_cuentas_bancarias/recuperacionpin.service.php">
                     <h1 style="color: black;">Recuperacion de Pin</h1>
                     <div class="form-group" style="text-align: left;">
-                        <label for="exampleInputEmail1">Ingresa Tu Correo Electronico</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" required>
-                        <small id="emailHelp" class="form-text text-muted"></small>
+                        <label for="exampleInputEmail1">UserName</label>
+                        <input type="text" class="form-control" id="username" name="username" aria-describedby="username" placeholder="Username" required>
+                        <small id="username" class="form-text text-muted"></small>
                     </div>
                     <div class="form-group row">
                         <p>***El pin sera enviado a Tu correo electronico</p>

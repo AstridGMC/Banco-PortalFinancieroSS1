@@ -52,44 +52,49 @@
         </div>
     </div>
     <?php include "header.php" ?>
+    <?php if(isset($_POST['fecha_final'])){
+        include "../service/reportes/reportecierrecuentas.service.php";
+    }
+    ?>
     <div id="header" class="header">
         <div class="header-content" style=" background-image: url('../public/imagenes/header-background.jpg'); ">
             <div id="principal">
                 <h1>Reporte de Cierre</h1>
-                <form method="POST" action="" class="formRepo">
+                <form method="POST" action="ReporteCierre.php" class="formRepo">
                     <div class="form-group row" style="text-align: left;">
                         <label for="staticEmail" class="col-sm-4 col-form-label">Filtrar por Fecha:</label>
                         <div class="col-sm-8">
-                            <input type="date"  name="fecha" id="fecha" class="form-control" value="<?php  echo date("Y-n-j"); ?>">
+                            <input type="date"  name="fecha_final" id="fecha_final" class="form-control" value="<?php  echo date("Y-n-j"); ?>">
                         </div>
                     </div>
-                    <button type="button" class="btn btn-info">Filtrar</button>
+                    <button type="submit" class="btn btn-info">Filtrar</button>
                 </form>
                 <br>
                 <table class="table">
 
                     <thead class="thead-dark">
                         <tr>
+                            <th scope="col">Log</th>
                             <th scope="col">No.Cuenta</th>
-                            <th scope="col">Usuario</th>
-                            <th scope="col">tipo</th>
-                            <th scope="col">fecha Apertura</th>
-                            <th scope="col">fecha Cierre</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Descripcion</th>
                             <th scope="col">Motivo</th>
                         </tr>
                     </thead>
                     <tbody>
+                    <?php if(isset($lista)){ ?>
                         <?php
-                        foreach ($cuentas as $cuenta) {
+                        foreach ($lista as $cuenta) {
                             echo ' <tr>';
-                            echo '  <td scope="row">' . $cuenta['numeroCuenta'] . '</th>';
-                            echo '  <td>' . $usuario['correo'] . '</th>';
-                            echo '  <td>' . $cuenta['tipo'] . '</th>';
-                            echo '  <td>' . $cuenta['fechaApertura'] . '</th>';
-                            echo '  <td>' . $cuenta['fechaCierre'] . '</th>';
+                            echo '  <td scope="row">' . $cuenta['id_log'] . '</th>';
+                            echo '  <td>' . $cuenta['no_cuenta'] . '</th>';
+                            echo '  <td>' . $cuenta['fecha_hora'] . '</th>';
+                            echo '  <td>' . $cuenta['descripcion'] . '</th>';
+                            echo '  <td>' . $cuenta['motivo'] . '</th>';
                             echo ' </tr>';
                         }
                         ?>
+                        <?php } ?>
                     </tbody>
                 </table>
                 <br>

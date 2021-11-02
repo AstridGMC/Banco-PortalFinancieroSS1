@@ -108,17 +108,16 @@ $(document).ready(function() {
 
 function cambiarBasic() {
     var inputNombre = document.getElementById("tipo");
-    inputNombre.value = "basic";
+    inputNombre.value = "1";
     document.getElementById("tipoText").style.display = "";
     document.getElementById("tipoText").innerHTML = "";
     document.getElementById("tipoText").innerHTML = "<h3>Tipo Elegido: BASIC</h3>";
     document.getElementById('next').style.display = "";
-
 }
 
 function cambiarPremium() {
     var inputNombre = document.getElementById("tipo");
-    inputNombre.value = "premium";
+    inputNombre.value = "2";
     document.getElementById("tipoText").style.display = "";
     document.getElementById("tipoText").innerHTML = "";
     document.getElementById("tipoText").innerHTML = "<h3>Tipo Elegido: PREMIUM</h3>";
@@ -127,7 +126,7 @@ function cambiarPremium() {
 
 function cambiarPlus() {
     var inputNombre = document.getElementById("tipo");
-    inputNombre.value = "plus";
+    inputNombre.value = "3";
     document.getElementById("tipoText").style.display = "";
     document.getElementById("tipoText").innerHTML = "";
     document.getElementById("tipoText").innerHTML = "<h3>Tipo Elegido: PLUS</h3>";
